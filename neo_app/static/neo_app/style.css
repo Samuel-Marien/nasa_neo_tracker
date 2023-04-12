@@ -1,12 +1,21 @@
-a {
-  color: red;
-  font-weight: bolder;
+/* position-absolute top-50 start-50 translate-middle  */
+
+.my-bg-image_search {
+  background: url("/static/neo_app/asteroid.jpg") 100% 0 no-repeat fixed;
 }
 
-h1 {
-  color: red;
+.my-search-block {
+  position: absolute;
+  top: 100px; 
+  left: 25%;
 }
 
-.test {
-  color: red;
+.my-bg-image_result {
+  background: url("/static/neo_app/result.jpg") 100% 0 no-repeat fixed;
+}
+
+.my-result-block {
+  position: absolute;
+  top: 70px;
+  left: 15%;
 }

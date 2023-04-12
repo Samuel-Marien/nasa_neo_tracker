@@ -1,19 +1,37 @@
 {% extends 'neo_app/base.html' %}
 
+{% load static %}
+
 {% block content %} 
   {% csrf_token %}
-    <form action="neo_result">
-      <input type="date" name="start_date" value="2023-01-01">
-      <select name="day_coverage">
-        <option value="1" selected>One day</option>
-        <option value="2">Two days</option>
-        <option value="3">Three days</option>
-        <option value="4">Four ays</option>
-        <option value="5">Five days</option>
-        <option value="6">Six days</option>
-        <option value="7">Seven days</option>
+<div class="my-bg-image_search vh-100 w-100">
+  <div class="my-search-block mx-auto border border-info-subtle text-white p-3 rounded text-center w-50 bg-dark" style="--bs-bg-opacity: .5;">
+    <div class="text-center">
+      <h3>Nasa NEO Web Tracker is a service for near earth Asteroid information.</h3>
+      <h5>With this tools you can search for Asteroids based on their closest approach date to Earth.</h5>
+      <div class="text-start border-top mt-3">
+        <ul>
+          <li>First of all select a day in the calendar to start the search.</li>
+          <li>Then choose how long you want the search to be done (max 7 days).</li>
+        </ul>
+      </div>
+    </div>
+    <form class="" action="neo_result">
+      <input class="btn btn-outline-info btn-sm" type="date" name="start_date" value="2023-01-01">
+      <select class="btn btn-outline-info btn-sm" name="day_coverage">
+        <option class="bg-white" value="1" selected>One day</option>
+        <option class="bg-white" value="2">Two days</option>
+        <option class="bg-white" value="3">Three days</option>
+        <option class="bg-white" value="4">Four ays</option>
+        <option class="bg-white" value="5">Five days</option>
+        <option class="bg-white" value="6">Six days</option>
+        <option class="bg-white" value="7">Seven days</option>
       </select>
-       <input type="submit" value="Submit">
+      <br>
+      <input class="mt-4 w-25 btn btn-outline-info btn-lg" type="submit" value="Submit">
     </form>
+  </div>
+</div>
+
 {% endblock %}
 

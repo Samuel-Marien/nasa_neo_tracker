@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime, timedelta
 
-import requests,json
+import requests
 
 
 def neo_home(request):
@@ -26,9 +26,6 @@ def neo_result(request):
    
     neos_api_object = response.json()
     neo_object_without_hearder = neos_api_object["near_earth_objects"]
-    # neo_header = neos_api_object["links"]
-    # next_link = neo_header["next"]
-    # prev_link = neo_header["previous"]
 
     # append response in a list of objects
     neos_list = []
@@ -36,13 +33,10 @@ def neo_result(request):
         neos_list.append(neo)
     # print(neos_list)
 
-
     return render(request,'neo_app/neo_result.html',
                   {'user_start_date':user_start_date, 
                    'user_day_coverage':user_day_coverage,
                    'user_end_date_sanityze':user_end_date_sanityze,
                    'neos_api_object':neos_api_object,
                    'neo_object_without_hearder':neo_object_without_hearder,
-                   'neos_list':neos_list,
-                    #  'next_link':next_link, 'prev_link':prev_link
-                     })
+                   'neos_list':neos_list, })
