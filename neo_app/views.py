@@ -22,17 +22,16 @@ def neo_result(request):
 
     # pull data from NASA rest api & convert reponse data into json format
     response = requests.get(f'https://api.nasa.gov/neo/rest/v1/feed?start_date={user_start_date}&end_date={user_end_date_sanityze}&api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d')
-   
     neos_api_object = response.json()
     neo_object_without_hearder = neos_api_object["near_earth_objects"]
 
-    # test 
+    # Extract date in a list 
     all_user_dates = list(neos_api_object["near_earth_objects"].keys())
     list_of_dates = []
     for date in all_user_dates:
         list_of_dates.append(date)
  
-
+    # Add all datas in a list 
     neos_list = []
     for item in list_of_dates:
         for neo in neo_object_without_hearder[item]:
@@ -47,7 +46,6 @@ def neo_result(request):
                    'neos_list':neos_list,'list_of_dates':list_of_dates })
 
 def neo_detail(request, neoId):
-    # pull data from NASA rest api & convert reponse data into json format
     response = requests.get(f'https://api.nasa.gov/neo/rest/v1/neo/{neoId}?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d')
     neo_details = response.json()
     close_five = neo_details["close_approach_data"][:5]
@@ -62,7 +60,7 @@ def apod_search(request):
 def apod_result(request):
     user_date = request.GET.get('user_date')
 
-    # pull data from NASA rest api & convert reponse data into json format
     response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d&date={user_date}')
     apod_object = response.json()
+    
     return render(request,'neo_app/apod_result.html',{'apod_object':apod_object})
