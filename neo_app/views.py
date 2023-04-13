@@ -26,11 +26,17 @@ def neo_result(request):
     neos_api_object = response.json()
     neo_object_without_hearder = neos_api_object["near_earth_objects"]
 
-    # append response in a list of objects
+    # test 
+    all_user_dates = list(neos_api_object["near_earth_objects"].keys())
+    list_of_dates = []
+    for date in all_user_dates:
+        list_of_dates.append(date)
+    print(list_of_dates)
+
     neos_list = []
-    for neo in neo_object_without_hearder[user_start_date]:
-        neos_list.append(neo)
-    # print(neos_list)
+    for item in list_of_dates:
+        for neo in neo_object_without_hearder[item]:
+            neos_list.append(neo)
 
     return render(request,'neo_app/neo_result.html',
                   {'user_start_date':user_start_date,
@@ -38,14 +44,12 @@ def neo_result(request):
                    'user_end_date_sanityze':user_end_date_sanityze,
                    'neos_api_object':neos_api_object,
                    'neo_object_without_hearder':neo_object_without_hearder,
-                   'neos_list':neos_list })
+                   'neos_list':neos_list,'list_of_dates':list_of_dates })
 
 def neo_detail(request, neoId):
     # pull data from NASA rest api & convert reponse data into json format
     response = requests.get(f'https://api.nasa.gov/neo/rest/v1/neo/{neoId}?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d')
     neo_details = response.json()
-    # print(neo_details["close_approach_data"])
-    # close_five = neo_detail.close_approach_data
     close_five = neo_details["close_approach_data"][:5]
     print(close_five)
 
