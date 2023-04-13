@@ -1,6 +1,6 @@
 {% extends 'neo_app/base.html' %}
 
-{% load static %}
+{% comment %} {% load static %} {% endcomment %}
 
 {% block content %} 
   {% csrf_token %}
@@ -16,7 +16,7 @@
         </ul>
       </div>
     </div>
-    <form class="" action="neo_result">
+    <form action="neo_result">
       <input class="btn btn-outline-info btn-sm" type="date" name="start_date" value="2023-01-01">
       <select class="btn btn-outline-info btn-sm" name="day_coverage">
         <option class="bg-white" value="1" selected>One day</option>

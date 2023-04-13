@@ -5,11 +5,23 @@ html {
 .my-bg-image_search {
   background: url("/static/neo_app/asteroid.jpg") 100% 0 no-repeat fixed;
 }
+
 .my-bg-image_apod_search {
   background: url("/static/neo_app/result.jpg") 100% 0 no-repeat fixed;
 }
+
 .my-bg-image_detail {
   background: url("/static/neo_app/detail.jpg") 100% 0 no-repeat fixed;
+}
+
+
+.apod_bloc {
+  width:700px;
+  height: 900px;
+}
+.apod_pic {
+  max-width : 700px;
+  max-height : 900px;
 }
 
 .my-search-block {
@@ -27,5 +39,5 @@ html {
 .my-detail-block {
   position: absolute;
   top: 70px;
-left:15%;
+  left:15%;
 }

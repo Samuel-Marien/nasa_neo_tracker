@@ -1,10 +1,18 @@
 {% extends 'neo_app/base.html' %}
 
+{% load static %}
+
 {% block content %} 
-  <p>{{apod_object.title}}</p>
-  <p>{{apod_object.copyright}}</p>
-  <p>{{apod_object.date}}</p>
-  <p>{{apod_object.explanation}}</p>
-  <p>{{apod_object.service_version}}</p>
-  <img src="{{apod_object.hdurl}}" alt="{{apod_object.title}}">"
+<main class="vh-100">
+  <div class="d-flex container pt-5">
+    <div class="apod_bloc me-4">
+      <img class="apod_pic" src="{{apod_object.url}}" alt="{{apod_object.title}}">
+    </div>
+    <div>
+      <p class="fs-2 fw-bold">{{apod_object.title}} <span class="fs-6 fw-light text-info">({{apod_object.service_version}})</span></p>
+      <p class="mt-1 border-bottom pb-2">{{apod_object.copyright}} - {{apod_object.date}}</p>
+      <p>{{apod_object.explanation}}</p>
+    </div>
+  </div>
+</main>
 {% endblock %}
