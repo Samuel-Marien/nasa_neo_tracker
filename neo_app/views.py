@@ -41,11 +41,13 @@ def neo_result(request):
                    'neos_list':neos_list })
 
 def neo_detail(request, neoId):
-
     # pull data from NASA rest api & convert reponse data into json format
     response = requests.get(f'https://api.nasa.gov/neo/rest/v1/neo/{neoId}?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d')
     neo_details = response.json()
-    print(neo_details)
+    # print(neo_details["close_approach_data"])
+    # close_five = neo_detail.close_approach_data
+    close_five = neo_details["close_approach_data"][:5]
+    print(close_five)
 
-    return render(request,'neo_app/neo_detail.html',{'neoId':neoId})
+    return render(request,'neo_app/neo_detail.html',{'neo_details':neo_details, 'close_five':close_five})
 

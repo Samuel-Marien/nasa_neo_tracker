@@ -1,12 +1,11 @@
 .my-bg-image_search {
   background: url("/static/neo_app/asteroid.jpg") 100% 0 no-repeat fixed;
 }
-
 .my-bg-image_result {
   background: url("/static/neo_app/result.jpg") 100% 0 no-repeat fixed;
 }
 .my-bg-image_detail {
-  background: url("/static/neo_app/result.jpg") 100% 0 no-repeat fixed;
+  background: url("/static/neo_app/detail.jpg") 100% 0 no-repeat fixed;
 }
 
 .my-search-block {
@@ -15,7 +14,7 @@
   left: 25%;
 }
 
-.my-result-block ,.my-detail-block {
+.my-result-block {
   position: absolute;
   top: 70px;
   left: 15%;
@@ -24,5 +23,5 @@
 .my-detail-block {
   position: absolute;
   top: 70px;
-  left: 25%;
+left:15%;
 }
