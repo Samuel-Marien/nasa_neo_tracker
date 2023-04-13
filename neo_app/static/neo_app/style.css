@@ -5,8 +5,8 @@ html {
 .my-bg-image_search {
   background: url("/static/neo_app/asteroid.jpg") 100% 0 no-repeat fixed;
 }
-.my-bg-image_result {
-  background: url("/static/neo_app/telescopic.jpg") 100% 0 no-repeat fixed;
+.my-bg-image_apod_search {
+  background: url("/static/neo_app/result.jpg") 100% 0 no-repeat fixed;
 }
 .my-bg-image_detail {
   background: url("/static/neo_app/detail.jpg") 100% 0 no-repeat fixed;

@@ -1,0 +1,10 @@
+{% extends 'neo_app/base.html' %}
+
+{% block content %} 
+  <p>{{apod_object.title}}</p>
+  <p>{{apod_object.copyright}}</p>
+  <p>{{apod_object.date}}</p>
+  <p>{{apod_object.explanation}}</p>
+  <p>{{apod_object.service_version}}</p>
+  <img src="{{apod_object.hdurl}}" alt="{{apod_object.title}}">"
+{% endblock %}

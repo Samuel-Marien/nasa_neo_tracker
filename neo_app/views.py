@@ -55,3 +55,14 @@ def neo_detail(request, neoId):
 
     return render(request,'neo_app/neo_detail.html',{'neo_details':neo_details, 'close_five':close_five})
 
+
+def apod_search(request):
+    return render(request,'neo_app/apod_search.html')
+
+def apod_result(request):
+    user_date = request.GET.get('user_date')
+
+    # pull data from NASA rest api & convert reponse data into json format
+    response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d&date={user_date}')
+    apod_object = response.json()
+    return render(request,'neo_app/apod_result.html',{'apod_object':apod_object})

@@ -1,0 +1,20 @@
+{% extends 'neo_app/base.html' %}
+
+{% block content %} 
+ {% csrf_token %}
+<div class="my-bg-image_apod_search vh-100 w-100">
+  <div class="my-search-block mx-auto text-white p-3 rounded text-center w-50 bg-dark" style="--bs-bg-opacity: .8;">
+    <div class="text-center">
+      <h3>Nasa Astronomic Picture Of The Day</h3>
+      <h5>One of the most popular websites at NASA is the Astronomy Picture of the Day.</h5>
+      <p>In fact, this website is one of the most popular websites across all federal agencies.</p>
+    </div>
+    <form class="" action="apod_result">
+      <input class="btn btn-outline-info btn-sm" type="date" name="user_date" value="2023-01-01">
+      <br>
+      <input class="mt-4 w-25 btn btn-outline-info btn-lg" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+
+{% endblock %}
