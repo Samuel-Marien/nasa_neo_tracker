@@ -31,7 +31,7 @@ def neo_result(request):
     list_of_dates = []
     for date in all_user_dates:
         list_of_dates.append(date)
-    print(list_of_dates)
+ 
 
     neos_list = []
     for item in list_of_dates:

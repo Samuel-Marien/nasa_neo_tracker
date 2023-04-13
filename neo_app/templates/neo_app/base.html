@@ -11,8 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'neo_app/style.css' %}" />
   </head>
   <body class="h-100 w-100">
-    <header class="position-fixed w-100">
-      <nav class="navbar bg-dark border-bottom border-info-subtle" style="--bs-bg-opacity: .5;--bs-border-opacity: .2;">
+    <header class="w-100">
+      <nav class="navbar bg-dark w-100">
         <div class="container-fluid">
           <div class="d-flex align-items-center">
             <i class="text-info" data-feather="wifi"></i>
@@ -22,7 +22,7 @@
       </nav>
     </header>
 
-      <div class=" ">
+      <div class="bg-dark">
         {% block content %} {% endblock %}
       </div>
 
