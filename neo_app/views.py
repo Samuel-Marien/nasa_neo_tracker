@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from datetime import datetime, timedelta
 
 import requests
-
 
 def neo_home(request):
     return render(request,'neo_app/neo_home.html')
@@ -34,9 +33,19 @@ def neo_result(request):
     # print(neos_list)
 
     return render(request,'neo_app/neo_result.html',
-                  {'user_start_date':user_start_date, 
+                  {'user_start_date':user_start_date,
                    'user_day_coverage':user_day_coverage,
                    'user_end_date_sanityze':user_end_date_sanityze,
                    'neos_api_object':neos_api_object,
                    'neo_object_without_hearder':neo_object_without_hearder,
-                   'neos_list':neos_list, })
+                   'neos_list':neos_list })
+
+def neo_detail(request, neoId):
+
+    # pull data from NASA rest api & convert reponse data into json format
+    response = requests.get(f'https://api.nasa.gov/neo/rest/v1/neo/{neoId}?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d')
+    neo_details = response.json()
+    print(neo_details)
+
+    return render(request,'neo_app/neo_detail.html',{'neoId':neoId})
+

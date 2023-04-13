@@ -12,6 +12,7 @@
       <table class="table table-striped table-hover table-bordered table-sm">
         <thead>
           <tr>
+            <th>Detail</th>
             <th>NEO Id</th>
             <th>Name</th>
             <th>Diameter (mini est./km)</th>
@@ -20,23 +21,24 @@
             <th>Next passage</th>
           </tr>
         </thead>
-
         <tbody>
         {% for neo in neos_list %}
-            <tr>
-            <td>{{ neo.id }}</td>
-            <td>{{ neo.name }}</td>
-            <td>{{ neo.estimated_diameter.kilometers.estimated_diameter_min }}</td>
-            <td>{{ neo.estimated_diameter.kilometers.estimated_diameter_max }}</td>
-            <td>
-            {% for item in neo.close_approach_data %}
-              {{ item.miss_distance.kilometers }}
+        <tr>
+          <td class="d-flex justify-content-center align-items-center"><a href="neo_detail/{{ neo.id }}" ><i class="text-info" data-feather="link"></i></a></td>
+          <td>{{ neo.id }}</td>
+          <td>{{ neo.name }}</td>
+          <td>{{ neo.estimated_diameter.kilometers.estimated_diameter_min }}</td>
+          <td>{{ neo.estimated_diameter.kilometers.estimated_diameter_max }}</td>
+          <td>
+          {% for item in neo.close_approach_data %}
+            {{ item.miss_distance.kilometers }}
+          {% endfor %}
+          </td>
+          <td>
+            {% for item in neo.close_approach_data %} 
+              {{ item.close_approach_date }}
             {% endfor %}
-            </td>
-            <td>
-              {% for item in neo.close_approach_data %} 
-                {{ item.close_approach_date }}
-              {% endfor %}
+        
           </tr> 
         {% endfor %}
         </tbody>
