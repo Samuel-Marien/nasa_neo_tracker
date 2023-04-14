@@ -49,7 +49,6 @@ def neo_detail(request, neoId):
     response = requests.get(f'https://api.nasa.gov/neo/rest/v1/neo/{neoId}?api_key=axrQkb17JHVEoxlaXS5H8em4lERotAP0ESB6pG2d')
     neo_details = response.json()
     close_five = neo_details["close_approach_data"][:5]
-    print(close_five)
 
     return render(request,'neo_app/neo_detail.html',{'neo_details':neo_details, 'close_five':close_five})
 
