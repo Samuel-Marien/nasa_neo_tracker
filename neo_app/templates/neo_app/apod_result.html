@@ -10,8 +10,13 @@
     </div>
     <div>
       <p class="fs-2 fw-bold">{{apod_object.title}} <span class="fs-6 fw-light text-info">({{apod_object.service_version}})</span></p>
-      <p class="mt-1 border-bottom pb-2">{{apod_object.copyright}} - {{apod_object.date}}</p>
-      <p>{{apod_object.explanation}}</p>
+      <p class="d-flex justify-content-between mt-1 border-bottom pb-2">{{apod_object.copyright}} {{apod_object.date}}
+        <a href="{{apod_object.hdurl}}" target="_blanc" class="d-flex align-items-center ms-5 btn btn-outline-info btn-sm shadow-sm">
+          <i class="icon-link icon-link-hover me-1" data-feather="external-link"></i>
+          <span class="fw-bold">Large view</span>
+        </a>
+      </p>
+      <p class="text-sm">{{apod_object.explanation}}</p>
     </div>
   </div>
 </main>
