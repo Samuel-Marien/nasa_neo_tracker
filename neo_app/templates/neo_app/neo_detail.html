@@ -2,17 +2,26 @@
 
 {% block content %} 
 <div class="my-bg-image_detail vh-100 w-100">
-  
   <div class="my-detail-block container border bg-white p-4 rounded" style="--bs-bg-opacity: .8;">
-    <h1 class="text-center fw-bolder border rounded shadow p-2 w-50 mx-auto font-monospace">☄️ {{ neo_details.name }} ☄️</h1>
+    <h1 class="text-center fw-bolder rounded shadow-sm p-2 w-50 mx-auto font-monospace">☄️ {{ neo_details.name }} ☄️</h1>
     <p class="m-0 mt-3 text-center fst-italic text-info-emphasis">{{ neo_details.orbital_data.orbit_class.orbit_class_description }}</p>
     <p class="m-0 mb-3 text-center fst-italic text-sm text-info-emphasis">{{ neo_details.orbital_data.orbit_class.orbit_class_range }}</p>
     <div class="d-flex justify-content-between w-50 mx-auto pt-4 border-bottom border-top border-info-subtle">
       <div>
         <p class="">NEO Id: <span class=" fw-bold text-info-emphasis ms-2 ">{{ neo_details.id }}</span></p>
         <p class="">Magnitude: <span class="fw-bold text-info-emphasis">{{ neo_details.absolute_magnitude_h }}</span></p>
-        <p class="">Hazardous asteroid: <span class="fw-bold text-info-emphasis">{{ neo_details.is_potentially_hazardous_asteroid }}</span></p>
-        <p class="">Sentry object: <span class="fw-bold text-info-emphasis">{{ neo_details.is_sentry_object }}</span></p>
+        
+        {% if neo_details.is_potentially_hazardous_asteroid %}
+        <p class="">Hazardous asteroid: <span class="fw-bold text-info-emphasis"><i class="text-info" data-feather="check-circle"></i></span></p>
+        {% else %}
+        <p class="">Hazardous asteroid: <span class="fw-bold text-info-emphasis"><i class="text-danger" data-feather="slash"></i></span></p>
+        {% endif %}
+        
+        {% if neo_details.is_sentry_object %}
+          <p class="d-flex align-items-center">Sentry object: <span class="ms-2 fw-bold text-success-emphasis"><i class="text-info" data-feather="check-circle"></i></span></p>
+          {% else %}
+          <p class="d-flex align-items-center">Sentry object: <span class="ms-2 fw-bold text-danger-emphasis"><i class="text-danger" data-feather="slash"></i></span></p>
+        {% endif %}
         <p class="">Estimated diam min: <span class="fw-bold text-info-emphasis">{{ neo_details.estimated_diameter.meters.estimated_diameter_min|floatformat:2 }}</span></p>
         <p class="">Estimated diam max: <span class="fw-bold text-info-emphasis">{{ neo_details.estimated_diameter.meters.estimated_diameter_max|floatformat:2 }}</span></p>
       </div>
@@ -22,11 +31,11 @@
         <p class="">Last observation date: <span class=" fw-bold text-info-emphasis ms-2 ">{{ neo_details.orbital_data.last_observation_date }}</span><p>
         <p class="">Equinox: <span class=" fw-bold text-info-emphasis ms-2 ">{{ neo_details.orbital_data.equinox }}</span><p>
         <p class="">Observations used: <span class=" fw-bold text-info-emphasis ms-2 ">{{ neo_details.orbital_data.observations_used }}</span><p>
-        <p class="">Orbit class_type: <span class=" fw-bold text-info-emphasis ms-2 ">{{ neo_details.orbital_data.orbit_class.orbit_class_type }}</span><p>
+        <p class="">Orbit class type: <span class=" fw-bold text-info-emphasis ms-2 ">{{ neo_details.orbital_data.orbit_class.orbit_class_type }}</span><p>
     </div>
     </div>
     
-    <h3 class="w-100 text-center my-3">The last five passages near earth</h3>
+    <h3 class="w-100 text-center my-3">The last passages near earth</h3>
     <table class="table table-striped table-hover table-bordered table-sm w-75 mx-auto shadow text-center">
         <thead>
           <tr>
